@@ -19,7 +19,7 @@ const envConfig = config();
       password: envConfig.parsed.DB_PASSWORD || process.env.DB_PASSWORD,
       database: envConfig.parsed.DB_DB || process.env.DB_DB,
       entities: [User],
-      synchronize: true,
+      synchronize: false,
       schema: 'finance' // 明确指定 schema
     }),
   ],
