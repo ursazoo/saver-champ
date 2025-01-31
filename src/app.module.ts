@@ -1,9 +1,12 @@
+
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { config } from 'dotenv';
 import { User } from './user.entity';
+
+import { LarkModule } from './modules/lark/lark.module';
 
 // 读取 .env 文件
 const envConfig = config();
@@ -22,6 +25,7 @@ const envConfig = config();
       synchronize: false,
       schema: 'finance' // 明确指定 schema
     }),
+    LarkModule
   ],
   controllers: [AppController],
   providers: [AppService],
