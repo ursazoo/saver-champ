@@ -11,7 +11,7 @@ const envConfig = config();
 @Module({
   imports: [
     TypeOrmModule.forRoot({
-      ssl: Boolean(envConfig.parsed.DB_SSL || process.env.DB_SSL),
+      ssl: false || Boolean(envConfig.parsed.DB_SSL || process.env.DB_SSL),
       type: 'postgres',
       host: envConfig.parsed.DB_HOST || process.env.DB_HOST,
       port: Number(envConfig.parsed.DB_PORT || process.env.DB_PORT),
@@ -20,6 +20,7 @@ const envConfig = config();
       database: envConfig.parsed.DB_DB || process.env.DB_DB,
       entities: [User],
       synchronize: true,
+      schema: 'finance' // 明确指定 schema
     }),
   ],
   controllers: [AppController],
